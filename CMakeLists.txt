@@ -1,16 +1,21 @@
 cmake_minimum_required(VERSION 3.15)
-project(oscada_laserbox)
 
-set(CMAKE_CXX_STANDARD 14)
+project(oscada_laserbox_module)
 
-include_directories(.)
+set(CMAKE_CXX_STANDARD 11)
 
-add_executable(oscada_laserbox
-        CMakeLists.txt
-        epiLaser.cpp
-        epiLaser.h
-        ftd2xx.h
-        instl.sh
-        module.cpp
-        module.h
-        WinTypes.h)
+include_directories(
+        /usr/include/openscada
+        /usr/include/jsoncpp
+        /usr/local/lib
+        /usr/lib
+        )
+
+link_directories(/usr/lib/ /usr/local/lib)
+
+#add_executable(oscada_laserbox_standalone lasertest.cpp epiLaser.cpp epiLaser.h  WinTypes.h ftd2xx.h)
+#target_link_libraries(oscada_laserbox ftd2xx jsoncpp)
+
+add_library(oscada_laserbox_module SHARED module.cpp module.h ftd2xx.h WinTypes.h epiLaser.h epiLaser.cpp)
+target_link_libraries(oscada_laserbox_module ftd2xx jsoncpp)
+

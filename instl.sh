@@ -1,4 +1,4 @@
 #! /bin/sh
 
-sudo rm /usr/lib/openscada/libLaserBoxModule.so
-sudo cp ./cmake-build-debug/libLaserBoxModule.so /usr/lib/openscada/
+sudo rm /usr/lib/openscada/oscada_laserbox_module.so
+sudo cp ./cmake-build-debug/oscada_laserbox_module.so /usr/lib/openscada/
